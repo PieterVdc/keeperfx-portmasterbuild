@@ -83,86 +83,33 @@ echo "Directory contents:"
 ls -la "$LIBDIR" | head -20
 echo ""
 
-# Ensure all required libraries are in the current directory (same as executable)
-# This works around ESUDO potentially dropping LD_LIBRARY_PATH
-# NOTE: We INCLUDE SDL2 because the binary was built against SDL2 2.0.22 with KMS/DRM support
-# System SDL2 on ArkOS may be too old or lack required features
-echo "Copying libraries to current directory..."
-# First, REMOVE any system libraries that may have been incorrectly copied before
-echo "Removing any stale system libraries from current directory..."
-rm -f ./libc.so* ./libm.so* ./libpthread.so* ./libdl.so* ./librt.so* ./libgcc_s.so* ./libstdc++.so* ./ld-linux*.so* 2>/dev/null
+# Use libraries directly from LIBDIR instead of copying
+echo "Using libraries from: $LIBDIR"
 
-for lib in $(ls "$LIBDIR"/*.so* 2>/dev/null); do
-    filename=$(basename $lib)
-    
-    # CRITICAL: Skip system libraries - these MUST use ArkOS system versions
-    # Copying these causes GLIBC version mismatches and breaks ALL shell commands
-    # Also skip SDL2 - use PortMaster's device-specific patched SDL2
-    case "$filename" in
-        libc.so*|libc-*.so*)
-            echo "SKIP system lib: $filename"
-            continue
-            ;;
-        libpthread.so*|libpthread-*.so*)
-            echo "SKIP system lib: $filename"
-            continue
-            ;;
-        libm.so*|libm-*.so*)
-            echo "SKIP system lib: $filename"
-            continue
-            ;;
-        libdl.so*|libdl-*.so*)
-            echo "SKIP system lib: $filename"
-            continue
-            ;;
-        librt.so*|librt-*.so*)
-            echo "SKIP system lib: $filename"
-            continue
-            ;;
-        libgcc_s.so*|libstdc++.so*)
-            echo "SKIP system lib: $filename"
-            continue
-            ;;
-        ld-linux*.so*|ld-*.so*)
-            echo "SKIP system lib: $filename"
-            continue
-            ;;
-        libSDL2*)
-            echo "SKIP SDL2 (use system): $filename"
-            continue
-            ;;
-    esac
-    
-    if [ ! -e "./$filename" ]; then
-        echo "Copying: $filename"
-        cp "$lib" ./
-    else
-        echo "Already exists: $filename"
-    fi
-done
+# Create symlinks for library version mismatches in LIBDIR if needed
+if [ -d "$LIBDIR" ]; then
+    cd "$LIBDIR"
+    for lib in libavcodec.so.58.* libavformat.so.58.* libavutil.so.56.* libswresample.so.3.*; do
+        [ -e "$lib" ] || continue
+        base=$(echo "$lib" | sed 's/\.[0-9]*$//')
+        [ -e "$base" ] || ln -sf "$lib" "$base" 2>/dev/null
+    done
 
-# Create symlinks for library version mismatches
-# Auto-detect the actual versions we have and create base symlinks
-for lib in libavcodec.so.58.* libavformat.so.58.* libavutil.so.56.* libswresample.so.3.*; do
-    [ -e "$lib" ] || continue
-    base=$(echo "$lib" | sed 's/\.[0-9]*$//')
-    [ -e "$base" ] || ln -sf "$lib" "$base" 2>/dev/null
-done
+    # Create SDL2 base symlinks if needed
+    for lib in libSDL2-2.0.so.0.* libSDL2_mixer-2.0.so.0.* libSDL2_net-2.0.so.0.*; do
+        [ -e "$lib" ] || continue
+        base=$(echo "$lib" | sed 's/\.[0-9]*$//')
+        [ -e "$base" ] || ln -sf "$lib" "$base" 2>/dev/null
+    done
+    cd "$GAMEDIR/keeperfx"
+fi
 
-# Create SDL2 base symlinks if needed
-for lib in libSDL2-2.0.so.0.* libSDL2_mixer-2.0.so.0.* libSDL2_net-2.0.so.0.*; do
-    [ -e "$lib" ] || continue
-    base=$(echo "$lib" | sed 's/\.[0-9]*$//')
-    [ -e "$base" ] || ln -sf "$lib" "$base" 2>/dev/null
-done
-
-echo "Libraries copied. Current directory now contains:"
-ls -la *.so* 2>/dev/null | head -20
+echo "Libraries in $LIBDIR:"
+ls -la "$LIBDIR"/*.so* 2>/dev/null | head -20
 echo ""
 
-# Use ABSOLUTE paths for LD_LIBRARY_PATH - sudo doesn't preserve relative paths like "."
-CURRENT_DIR="$(pwd)"
-export LD_LIBRARY_PATH="$CURRENT_DIR:$LIBDIR:$LD_LIBRARY_PATH"
+# Use ABSOLUTE paths for LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="$LIBDIR:$LD_LIBRARY_PATH"
 echo "LD_LIBRARY_PATH set to: $LD_LIBRARY_PATH"
 echo ""
 # Detect or map architecture to binary name
