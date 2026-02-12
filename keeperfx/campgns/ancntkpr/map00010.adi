@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00010
+REM Automatically generated on 25 Aug 2008, 19:36:56
+
+LEVEL_VERSION(1,1,0)
+LEVEL_TIMESTAMP(896632018,1219685816)
+USER_COMMANDS_COUNT(893,19,552,13)
+LEVEL_DESCRIPTION("Welcome, Keeper, to an esteemed seat of learning. You have impressed the Ancients, and earned a place at a highly regarded College indeed!")
+LEVEL_AUTHORS("","")

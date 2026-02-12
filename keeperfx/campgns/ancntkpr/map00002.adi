@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00002
+REM Automatically generated on 24 Aug 2008, 15:44:27
+
+LEVEL_VERSION(1,0,0)
+LEVEL_TIMESTAMP(896888412,1219585467)
+USER_COMMANDS_COUNT(1,0,0,0)
+LEVEL_DESCRIPTION("A strange land this is, Keeper! The absence of portals will test your abilities to the full. Rooms cannot be researched here. You will learn to construct them by stealing from other Keepers.")
+LEVEL_AUTHORS("","")

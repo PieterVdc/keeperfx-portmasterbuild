@@ -1,0 +1,10 @@
+
+	Compiling Project
+
+compiling	complist.cpp
+
+building executable
+Warning(1027): file OS\DOS\engine3.obj(D:\Dev\Keepnew\engine3.cpp): redefinition of BasicQ near * near buckets[] ignored
+Warning(1027): file OS\DOS\engine3.obj(D:\Dev\Keepnew\engine3.cpp): redefinition of char unsigned near * near getpoly ignored
+
+ALL DONE

@@ -1,0 +1,10 @@
+; KeeperFX Level Overview File (LOF)
+KIND = MULTI
+NAME_TEXT = Water around
+ENSIGN_POS = 800 330
+ENSIGN_ZOOM = 800 330
+PLAYERS = 4
+OPTIONS = 
+AUTHOR = Bullfrog
+DESCRIPTION = Original Dungeon Keeper multiplayer level
+DATE = 1997-06-01

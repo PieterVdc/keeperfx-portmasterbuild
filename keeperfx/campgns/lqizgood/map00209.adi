@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00209
+REM Automatically generated on 24 Aug 2008, 14:02:34
+
+LEVEL_VERSION(1,0,0)
+LEVEL_TIMESTAMP(1168633992,1219579354)
+USER_COMMANDS_COUNT(18,1,0,0)
+LEVEL_DESCRIPTION("Oh noble one, you have stumbled across 2 rival keepers battling it out. You must destroy both. The good news is that they are very pre-ocupied. If i were you, i would concentrate on blue first, and rumour has it there is a weakness at the back of blue's fortress")
+LEVEL_AUTHORS("Lquiz","")

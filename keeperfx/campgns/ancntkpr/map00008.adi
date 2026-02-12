@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00008
+REM Automatically generated on 25 Aug 2008, 19:09:03
+
+LEVEL_VERSION(1,0,0)
+LEVEL_TIMESTAMP(896631570,1219684143)
+USER_COMMANDS_COUNT(579,28,179,13)
+LEVEL_DESCRIPTION("No time to waste, Keeper! The Ancient Avatar has tracked you down, and recalls a previous encounter! Your Dungeon is weak; re-inforce it immediately!")
+LEVEL_AUTHORS("","")

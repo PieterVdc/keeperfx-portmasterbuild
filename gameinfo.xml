@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gameList>
+  <game>
+    <path>./KeeperFX.sh</path>
+    <name>KeeperFX</name>
+    <desc>KeeperFX is an open-source remake and fan expansion of Dungeon Keeper.
+The main goal of KeeperFX is to preserve and expand upon the original Dungeon Keeper experience, offering many new features, improvements, and much more while staying true to the original feeling of the game</desc>
+    <releasedate>20080401T000000</releasedate>
+    <developer>dkfans</developer>
+    <publisher>dkfans</publisher>
+    <genre>Strategy Simulation</genre>
+    <image>./cover.jpg</image>
+  </game>
+</gameList>

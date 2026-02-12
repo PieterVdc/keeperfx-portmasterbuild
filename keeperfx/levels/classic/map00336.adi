@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00336
+REM Automatically generated on 19 Aug 2008, 23:03:47
+
+LEVEL_VERSION(1,1,0)
+LEVEL_TIMESTAMP(897124168,1219179827)
+USER_COMMANDS_COUNT(39,5,0,0)
+LEVEL_DESCRIPTION("I have designed it to be quite hard, to give experienced players a challenge. You may find that tricks that were exploited in the original levels have now been used against you, and tactics will be a necessity to win.")
+LEVEL_AUTHORS("Darren Rees","")

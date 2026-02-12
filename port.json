@@ -1,0 +1,52 @@
+{
+  "version": 4,
+  "name": "keeperfx.zip",
+  "items": [
+    "keeperfx"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "keeperfx",
+    "porter": [
+      "qqluqq"
+    ],
+    "desc": "KeeperFX is an open-source remake and fan expansion of Dungeon Keeper.\n\nThe main goal of KeeperFX is to preserve and expand upon the original Dungeon Keeper experience, offering many new features, improvements, and much more while staying true to the original feeling of the game.\n\nYou can delve into the original campaign, or enjoy custom content created by the community and shared on the Workshop.",
+    "desc_md": null,
+    "inst": "List of files required from original DK.\n------------------------------\n\nThis document lists files which need to be added to KeeperFX from original dungeon Keeper CD, or one of the digital releases of the game.\n\nFiles included in GOG version:\n http://www.gog.com/en/gamecard/dungeon_keeper\ncan be used, but only those inside CD image file\nshipped with that version. The CD image has to be\nextracted or mounted to use these files.\n\nList of required files will follow:\n\n./data/bluepal.dat\n./data/bluepall.dat\n./data/dogpal.pal\n./data/hitpall.dat\n./data/lightng.pal\n./data/main.pal\n./data/mapfadeg.dat\n./data/redpal.col\n./data/redpall.dat\n./data/slab0-0.dat\n./data/slab0-1.dat\n./data/vampal.pal\n./data/whitepal.col\n\n./sound/atmos1.sbk\n./sound/atmos2.sbk\n./sound/bullfrog.sbk",
+    "inst_md": null,
+    "genres": [
+      "strategy"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": true,
+    "runtime": [],
+    "store": [
+      {
+        "name": "GOG",
+        "gameurl": "http://www.gog.com/en/gamecard/dungeon_keeper",
+        "developerurl": ""
+      },
+      {
+        "name": "EA",
+        "gameurl": "https://www.ea.com/games/dungeon-keeper/dungeon-keeper",
+        "developerurl": ""
+      },
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1996630/Dungeon_Keeper_Gold/",
+        "developerurl": ""
+      }
+    ],
+    "availability": "paid",
+    "reqs": [
+      "power",
+      "!lowres"
+    ],
+    "arch": [
+      "aarch64",
+      "x86_64"
+    ],
+    "min_glibc": ""
+  }
+}

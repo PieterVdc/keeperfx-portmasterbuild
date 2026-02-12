@@ -1,0 +1,16 @@
+This directory will store movies and screenshots.
+
+ Record a movie
+  To record a FLC movie, press Shift+M during the game.
+  A text "REC" will appear to inform you that recording
+  is on (the text will not be visible in recorded movie).
+  Note that only video is recorded, no sound. The movie
+  will be placed in 'SCRSHOTS' folder; you may play it
+  with "mplayer" or its clones. Note that the generated
+  file may be large.
+
+ Make a screenshot
+  Use the Shift+C keys to make screenshot. The image may
+  be written in 'mhwanh' HSI/RAW format, or Windows BMP
+  format. Format is chosen in KEEPERFX.CFG, 'SCREENSHOT='
+  option, which may be set to 'HSI' or 'BMP'.

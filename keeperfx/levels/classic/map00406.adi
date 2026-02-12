@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00406
+REM Automatically generated on 09 Aug 2011, 19:07:19
+
+LEVEL_VERSION(1,53,0)
+LEVEL_TIMESTAMP(1299312649,1312909639)
+USER_COMMANDS_COUNT(71364,1661,10288,260)
+LEVEL_DESCRIPTION("An evil Keeper terrorizes this region, using his vile magic to drive the good people crazy. You will have to intervene right away!")
+LEVEL_AUTHORS("Duke Ragereaver","")

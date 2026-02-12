@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00205
+REM Automatically generated on 24 Aug 2008, 13:32:07
+
+LEVEL_VERSION(1,0,0)
+LEVEL_TIMESTAMP(1168625266,1219577527)
+USER_COMMANDS_COUNT(33,1,0,0)
+LEVEL_DESCRIPTION("Welcome to this realm, noble hero. It is your holy quest to vanquish the spawners from here forever. They spawn in a pit of lava, heavily guarded. If only you could cover it up...")
+LEVEL_AUTHORS("Lquiz","")

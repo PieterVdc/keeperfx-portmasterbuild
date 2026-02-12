@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00101
+REM Automatically generated on 25 Aug 2008, 20:50:57
+
+LEVEL_VERSION(1,0,0)
+LEVEL_TIMESTAMP(896633290,1219690257)
+USER_COMMANDS_COUNT(1,0,0,0)
+LEVEL_DESCRIPTION("This realm will demonstrate the power of the Undead!")
+LEVEL_AUTHORS("","")

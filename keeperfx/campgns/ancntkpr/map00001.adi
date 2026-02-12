@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00001
+REM Automatically generated on 24 Aug 2008, 15:30:16
+
+LEVEL_VERSION(1,0,0)
+LEVEL_TIMESTAMP(898204138,1219584616)
+USER_COMMANDS_COUNT(0,0,0,0)
+LEVEL_DESCRIPTION("Welcome, Keeper, to the first of the Ancient Realms. The carpet is currently white, but will soon be soaked red with the blood of your enemies! This test is beneath you I'm sure.")
+LEVEL_AUTHORS("","")

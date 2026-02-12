@@ -1,0 +1,20 @@
+If you already have Dungeon Keeper configured to run from your hard drive,
+you don't need to read this file.
+
+To play Ancient Keeper, Dungeon Keeper must be configured to run from your
+hard drive (designated c: below; if yours is different or partitioned then
+change accordingly)
+
+1. Go into the 'Keeper' directory on your harddisk and create two 
+   sub-directories called 'ldata' and 'levels'.
+
+2. Copy all files from the \keeper\ldata and \keeper\levels directories 
+   of the original Dungeon Keeper CD into the two directories you just 
+   created.
+
+3. Edit your keeper.cfg file in your keeper directory on your harddisk,
+   to point to the keeper directory on your harddisk, like this:
+
+   INSTALL_PATH=C:\Program Files\Bullfrog\keeper
+   or
+   INSTALL_PATH=C:\games\keeper

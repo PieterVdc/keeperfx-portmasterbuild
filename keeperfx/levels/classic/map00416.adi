@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00416
+REM Automatically generated on 10 May 2009, 18:57:28
+
+LEVEL_VERSION(1,1,0)
+LEVEL_TIMESTAMP(1240327530,1241974648)
+USER_COMMANDS_COUNT(4,1,0,0)
+LEVEL_DESCRIPTION("Basicaly, you have to defeat the blue keeper, a Hero Dungeon Keeper created by four magical beings. As of now, he is brain dead. So you must kill the four magical beings in order to hopefully win. If the dungeon keeper wakes up, you have to kill him too. You are limited, and it gets harder as you go along, the difficulty jumping drastrically. Have fun.")
+LEVEL_AUTHORS("Diety Demon","")

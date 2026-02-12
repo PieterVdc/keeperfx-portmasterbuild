@@ -1,0 +1,10 @@
+; KeeperFX Level Overview File (LOF)
+KIND = MULTI
+NAME_TEXT = Spaghetti
+ENSIGN_POS = 1022 667
+ENSIGN_ZOOM = 1022 667
+PLAYERS = 2
+OPTIONS = 
+AUTHOR = Bullfrog
+DESCRIPTION = Original Dungeon Keeper multiplayer level
+DATE = 1997-06-01

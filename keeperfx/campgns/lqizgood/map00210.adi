@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00210
+REM Automatically generated on 24 Aug 2008, 14:08:43
+
+LEVEL_VERSION(1,1,0)
+LEVEL_TIMESTAMP(1168684994,1219579723)
+USER_COMMANDS_COUNT(18,1,0,0)
+LEVEL_DESCRIPTION("It looks like these keepers saw what happened last time. They have decided to ally against you. There is not much gold, so you must capture the centre gems and starve your enemies out! Traps are a good idea on this level, to prevent coridor rushing!")
+LEVEL_AUTHORS("Lquiz","")

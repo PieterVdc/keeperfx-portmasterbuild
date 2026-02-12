@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00213
+REM Automatically generated on 24 Aug 2008, 14:23:42
+
+LEVEL_VERSION(1,0,0)
+LEVEL_TIMESTAMP(1168698792,1219580622)
+USER_COMMANDS_COUNT(16,1,0,0)
+LEVEL_DESCRIPTION("The evil keepers, father and son, have imprisoned our savior, the Avatar. Go and rescue him!")
+LEVEL_AUTHORS("Lquiz","")

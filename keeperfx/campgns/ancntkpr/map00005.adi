@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00005
+REM Automatically generated on 25 Aug 2008, 18:45:24
+
+LEVEL_VERSION(1,2,0)
+LEVEL_TIMESTAMP(896631128,1219682724)
+USER_COMMANDS_COUNT(308,15,259,2)
+LEVEL_DESCRIPTION("Behold, the abandoned realm of Salaar, one of the Great Ancient Keepers. Paranoid heroes guard this realm with care!")
+LEVEL_AUTHORS("","")

@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00227
+REM Automatically generated on 29 Aug 2008, 13:10:05
+
+LEVEL_VERSION(1,1,0)
+LEVEL_TIMESTAMP(1187890748,1220008205)
+USER_COMMANDS_COUNT(14,1,0,0)
+LEVEL_DESCRIPTION("The 8th level is called Dreamweave Caverns. Four wizards have cast a spell of fear over your servants, Keeper. Twelve imps fled into the northern part of these caves. Find at least eight of them and make sure they live. Oh, your servants took your spellbooks as well. Time to do a thorough search.")
+LEVEL_AUTHORS("Burdened Imp","")

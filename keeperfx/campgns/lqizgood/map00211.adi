@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00211
+REM Automatically generated on 24 Aug 2008, 14:14:18
+
+LEVEL_VERSION(1,0,0)
+LEVEL_TIMESTAMP(1168685646,1219580058)
+USER_COMMANDS_COUNT(4,1,0,0)
+LEVEL_DESCRIPTION("This time there are 3 keepers after your blood, noble one. Starvation wont work this time, as they all have gem veins. Take one early to get a foothold, and the others will soon fall.")
+LEVEL_AUTHORS("Lquiz","")

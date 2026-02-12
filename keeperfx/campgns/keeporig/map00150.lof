@@ -1,0 +1,10 @@
+; KeeperFX Level Overview File (LOF)
+KIND = MULTI
+NAME_TEXT = DD Multi 15
+ENSIGN_POS = 480 345
+ENSIGN_ZOOM = 480 345
+PLAYERS = 4
+OPTIONS = 
+AUTHOR = Bullfrog
+DESCRIPTION = Original Deeper Dungeons multiplayer level
+DATE = 1997-09-15

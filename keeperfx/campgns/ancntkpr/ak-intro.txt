@@ -1,0 +1,28 @@
+Ancient Keeper
+
+"You will be transported back to the days when evil flourished. Noble heroes, brave of heart and pure in spirit were ever vigilant to their task. Far greater wisdom & cunning will be required to defeat both the heroes and the ruthless masters of this age. If you
+conquer these enemies, then you will have truly earned a seat amongst the Great Ancient Keepers".
+
+Ancient Keeper is a complete campaign set for Dungeon Keeper. It is designed to be played sequentially from levels 1-20 as per the original Dungeon Keeper game. New secret levels & a full moon level are included. Deeper Dungeons is not required to run Ancient Keeper.
+
+We have discovered around twenty features of the Dungeon Keeper game, which have been exploited in a constructive manner. Be prepared to find some pretty tough puzzles, which will really test your skills and knowledge about DK. Nearly every level contains some novel twists, which you won't have seen in the Bullfrog maps. This is for serious keepers only. Serious keepers will have a hard time trying to solve the puzzles and complete the levels. We believe most players will have difficulties in solving the levels, therefore complete walkthrus with solutions of each puzzle will be available. But be assured; each level can be completed. We have verified that by play-testing every map several times.
+
+To use Ancient Keeper you must delete all files related to levels 1 to 20, and 100-105 (map00***.*). Over-writing files isn't sufficient as there may be extra files related to the original levels. You must have your Dungeon Keeper game configured to run from the hard drive. The original levels can be restored from the Dungeon Keeper CD at a future date if required. For those who need instructions on configuring DK to run from the hard drive, and more detailed information, see the file DK-HD.txt included within this download.
+
+Included is a file called text.dat. This should over-write the file of the same name contained in the \data sub-directory. It is required to ensure that the correct text appears during the game. All files named map00***.* should be copied into your ..\keeper\levels sub-directory. Regrettably, the original sound files will remain, with the original level names.
+
+Ancient Keeper was written by Pawel Simbierowicz and Dayo Kay, using the Bullfrog editor, UnDed, & Adikted. It has been extensively tested and is believed to be completely free from bugs (using the AI patched version of the game). Whilst there is no indication of any hazard, no responsibility will be accepted for any damage to your hard drive and/or data files upon downloading Ancient Keeper. 
+
+These files are provided as part of a campaign. Feel free to distribute these, but please distribute as a set. In addition, please do not distribute edited single levels. This campaign may not be copied for sale to any third party. This add-on is not endorsed by Bullfrog.
+
+Bullfrog & Dungeon Keeper are registered trademarks of Bullfrog Productions Ltd. UnDed was written by Gilmour & Folds. Adikted was written by Skeet.
+
+Thanks due to Fizzbann, Reality-X & Karsten Plesner. We hope you enjoy playing; let the Evil commence!
+
+Feedback is welcomed. If you have comments / suggestions / bug reports, or want walkthroughs for any level, send e-mail to:
+
+Pawel.Simbierowicz@vtt.fi
+or
+dayokay@aol.com
+
+Whilst we cannot guarantee a reply, we will do all we can to help.

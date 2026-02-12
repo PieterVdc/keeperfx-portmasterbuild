@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00204
+REM Automatically generated on 24 Aug 2008, 13:22:19
+
+LEVEL_VERSION(1,0,0)
+LEVEL_TIMESTAMP(1168540316,1219576939)
+USER_COMMANDS_COUNT(4,1,0,0)
+LEVEL_DESCRIPTION("Gather up some gold, and forces, as rumour has it an evil keeper is gathering forces in the south! Nip him in the bud!")
+LEVEL_AUTHORS("Lquiz","")

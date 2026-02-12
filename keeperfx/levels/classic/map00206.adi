@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00206
+REM Automatically generated on 03 Sep 2008, 01:53:36
+
+LEVEL_VERSION(1,2,0)
+LEVEL_TIMESTAMP(1200922480,1220399616)
+USER_COMMANDS_COUNT(1010,30,28,148)
+LEVEL_DESCRIPTION("The kind of map where heroes come knocking at your door. Although there's no background nor campain, heroes are now smugglers in the 'history' of the map, eager of gold and lands, a bit like Keepers in fact. Anyway the map is rather difficult, far beyond what we used to see in Deeper Dungeons. It was made easier from original version, but still it's hard. Tho I'm sure there's some experts around here that will defeat it in no time.")
+LEVEL_AUTHORS("Stanza","")

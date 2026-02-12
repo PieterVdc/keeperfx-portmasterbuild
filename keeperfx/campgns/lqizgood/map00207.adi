@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00207
+REM Automatically generated on 24 Aug 2008, 13:41:27
+
+LEVEL_VERSION(1,0,0)
+LEVEL_TIMESTAMP(1168618504,1219578087)
+USER_COMMANDS_COUNT(84,3,8,0)
+LEVEL_DESCRIPTION("All you have is one thief. You must use brains, courage and skill to pass the initial test, and then you must vanquish the evil Warlocks that keep you enslaved, and destroy the evil keeper once and for all!")
+LEVEL_AUTHORS("Lquiz","")

@@ -1,0 +1,8 @@
+REM ADiKtEd script file for map00212
+REM Automatically generated on 24 Aug 2008, 14:20:46
+
+LEVEL_VERSION(1,0,0)
+LEVEL_TIMESTAMP(1168693838,1219580446)
+USER_COMMANDS_COUNT(99,9,0,1)
+LEVEL_DESCRIPTION("You have come into the dungeon of a previous hero who attempted to destroy the evil fortess. He failed, but you shall succeed! YOu have all the time, and resources in the world to build up an army and crush the evil forever!")
+LEVEL_AUTHORS("Lquiz","")

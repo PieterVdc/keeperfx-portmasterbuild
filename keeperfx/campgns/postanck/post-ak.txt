@@ -1,0 +1,21 @@
+Here are my 7 post AK maps. They are to be played from within
+the Deeper Dungeons add-on. Map names are hints (mostly). To
+win the levels, you'll have to study psychological profile of
+the Tentacles, find out how to clone Avatars, learn new ways
+of utilizing enemy creatures as well as discover surprising
+things about certain kind of walls. I didn't bother to add
+any text messages to the scripts, so you won't receive any
+hints from the game itself. But feel free to ask me, if you
+have any problems with these maps.
+
+Levels:
+190, Armageddon
+191, Collect
+192, Sacrifice
+193, Defection
+194, Imps
+195, Clone
+196, Dig
+
+Cheers,
+Pawel.Simbierowicz@vtt.fi
