@@ -40,7 +40,6 @@
     ],
     "availability": "paid",
     "reqs": [
-      "power",
       "!lowres"
     ],
     "arch": [
