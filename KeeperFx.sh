@@ -2,6 +2,11 @@
 # Below we assign the source of the control folder (which is the PortMaster folder) based on the distro:
 # VERSION: 2025-02-08-v2
 
+echo 'core.%e.%p' | sudo tee /proc/sys/kernel/core_pattern
+sudo sysctl -w kernel.core_uses_pid=1
+
+export KEEPERFX_NO_SUDO=1
+
 # EMERGENCY DEBUG: Write to a temp file to see if script even starts
 echo "KeeperFX launcher VERSION 2025-02-08-v2 started at $(date)" > /tmp/keeperfx_startup.log
 echo "Args: $@" >> /tmp/keeperfx_startup.log
@@ -108,8 +113,17 @@ echo "Libraries in $LIBDIR:"
 ls -la "$LIBDIR"/*.so* 2>/dev/null | head -20
 echo ""
 
+# CRITICAL: Copy SDL2 libraries to current directory
+# System SDL2/SDL2_mixer may have version mismatches - bundled versions MUST be used
+echo "=== Copying critical SDL2 libraries to current directory ==="
+for lib in libSDL2-2.0.so.0* libSDL2_mixer-2.0.so.0* libSDL2_net-2.0.so.0*; do
+    [ -e "$LIBDIR/$lib" ] || continue
+    cp "$LIBDIR/$lib" ./ 2>/dev/null && echo "✓ Copied $lib" || echo "❌ Failed to copy $lib"
+done
+echo ""
+
 # Use ABSOLUTE paths for LD_LIBRARY_PATH
-export LD_LIBRARY_PATH="$LIBDIR:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH=".:$LIBDIR:$LD_LIBRARY_PATH"
 echo "LD_LIBRARY_PATH set to: $LD_LIBRARY_PATH"
 echo ""
 # Detect or map architecture to binary name
@@ -266,19 +280,52 @@ echo ""
 ulimit -c unlimited
 echo "Core dumps enabled (ulimit -c unlimited)"
 echo "If crash occurs, check for core file in: $(pwd)"
+
+# Fix core dump pattern to ensure cores are written to current directory
+echo "Configuring core dump pattern..."
+CURRENT_CORE_PATTERN=$(cat /proc/sys/kernel/core_pattern 2>/dev/null || echo "unknown")
+echo "Current core_pattern: $CURRENT_CORE_PATTERN"
+if [[ "$CURRENT_CORE_PATTERN" == core* ]] || [[ "$CURRENT_CORE_PATTERN" == "unknown" ]]; then
+    echo "✓ Core pattern looks good"
+else
+    echo "⚠ Core pattern redirects to handler - attempting to fix..."
+    echo "core.%e.%p" | sudo tee /proc/sys/kernel/core_pattern 2>/dev/null && echo "✓ Fixed" || echo "❌ Failed (needs sudo access)"
+    # Verify it actually changed
+    CURRENT_CORE_PATTERN=$(cat /proc/sys/kernel/core_pattern 2>/dev/null || echo "unknown")
+    echo "After fix attempt: $CURRENT_CORE_PATTERN"
+fi
+
+# Verify ulimit actually worked
+ULIMIT_CORE=$(ulimit -c)
+echo "ulimit -c reports: $ULIMIT_CORE"
+if [ "$ULIMIT_CORE" = "unlimited" ] || [ "$ULIMIT_CORE" -gt 1000000 ]; then
+    echo "✓ Core size limit is sufficient"
+else
+    echo "⚠ Core size limit may be too small: $ULIMIT_CORE"
+fi
+
+# Check write permissions
+if [ -w "." ]; then
+    echo "✓ Current directory is writable"
+else
+    echo "❌ Current directory is NOT writable - cores cannot be written!"
+fi
 echo ""
 
-# Try to detect if ESUDO is causing issues
-if [ -n "$ESUDO" ]; then
+# TEMPORARY DEBUG MODE: Bypass ESUDO to get proper core dumps
+# ESUDO prevents core dumps from being written properly
+# Set KEEPERFX_USE_SUDO=1 to re-enable ESUDO
+echo "=== CORE DUMP DEBUG MODE ==="
+if [ "$KEEPERFX_USE_SUDO" = "1" ]; then
+    echo "ESUDO enabled (KEEPERFX_USE_SUDO=1)"
     echo "ESUDO is set to: $ESUDO"
-    echo "ESUDO may drop LD_LIBRARY_PATH - libraries copied to current dir to compensate"
-    echo ""
-    
-    # Show what ESUDO actually does
-    echo "Testing ESUDO environment preservation..."
-    $ESUDO env | grep LD_LIBRARY_PATH || echo "  ⚠ WARNING: ESUDO drops LD_LIBRARY_PATH!"
-    echo ""
+elif [ -n "$ESUDO" ]; then
+    echo "⚠ TEMPORARILY DISABLING ESUDO for crash debugging"
+    echo "Original ESUDO was: $ESUDO"
+    echo "(Core dumps don't work under sudo - set KEEPERFX_USE_SUDO=1 to override)"
+    ESUDO=""
 fi
+echo ""
 
 # Final library path verification right before launch
 echo "=== PRE-LAUNCH VERIFICATION ==="
@@ -289,16 +336,28 @@ ls -l ./*.so* 2>/dev/null | grep "^l" | wc -l
 echo ""
 
 echo "=== LAUNCHING KEEPERFX ==="
-echo "Command: $ESUDO env LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH\" $BINARY"
+
+# Check if we can use catchsegv for better crash info
+USE_CATCHSEGV=""
+if which catchsegv >/dev/null 2>&1; then
+    echo "catchsegv available - will capture segfault details"
+    USE_CATCHSEGV="catchsegv"
+fi
+
+if [ -n "$ESUDO" ]; then
+    echo "Command: $ESUDO env LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH\" $USE_CATCHSEGV $BINARY -nosound"
+else
+    echo "Command: $USE_CATCHSEGV $BINARY -nosound (no sudo)"
+fi
 echo "Starting at: $(date)"
 echo ""
 
 # Now we launch KeeperFX - explicitly pass LD_LIBRARY_PATH through sudo using env
 if [ -n "$ESUDO" ]; then
     # sudo drops LD_LIBRARY_PATH, so we use env to set it
-    $ESUDO env LD_LIBRARY_PATH="$LD_LIBRARY_PATH" "$BINARY"
+    $ESUDO env LD_LIBRARY_PATH="$LD_LIBRARY_PATH" $USE_CATCHSEGV "$BINARY" -nosound
 else
-    "$BINARY -nosound"
+    $USE_CATCHSEGV "$BINARY" -nosound
 fi
 
 LAUNCH_EXIT=$?
@@ -309,14 +368,48 @@ if [ $LAUNCH_EXIT -eq 139 ]; then
     echo "❌ Exit code 139 = SEGMENTATION FAULT"
     echo ""
     echo "Checking for core dump..."
+    CORE_FILE=""
     if [ -f core ]; then
-        echo "Core dump found: $(ls -lh core)"
-        echo "Analyzing with gdb (if available)..."
-        which gdb && echo "To debug: gdb $BINARY core" && echo "Then type 'bt' for backtrace"
-    elif [ -f core.* ]; then
-        echo "Core dump found: $(ls -lh core.*)"
+        CORE_FILE="core"
+    elif compgen -G "core.*" > /dev/null; then
+        CORE_FILE=$(ls -t core.* 2>/dev/null | head -1)
+    fi
+    
+    if [ -n "$CORE_FILE" ]; then
+        CORE_SIZE=$(stat -c%s "$CORE_FILE" 2>/dev/null || echo 0)
+        if [ "$CORE_SIZE" -eq 0 ]; then
+            echo "❌ Core dump is EMPTY (0 bytes): $CORE_FILE"
+            echo ""
+            echo "This usually means:"
+            echo "  1. Core pattern is piping to a handler that failed"
+            echo "  2. Insufficient permissions to write core"
+            echo "  3. Disk space issue"
+            echo ""
+            echo "To fix, try running these commands on the device:"
+            echo "  echo 'core.%e.%p' | sudo tee /proc/sys/kernel/core_pattern"
+            echo "  sudo sysctl -w kernel.core_uses_pid=1"
+            echo ""
+            echo "Or set KEEPERFX_NO_SUDO=1 and run without sudo:"
+            echo "  export KEEPERFX_NO_SUDO=1"
+        else
+            echo "✓ Core dump found: $(ls -lh "$CORE_FILE")"
+            echo "Analyzing with gdb (if available)..."
+            if which gdb >/dev/null 2>&1; then
+                echo ""
+                echo "Quick backtrace:"
+                gdb -batch -ex "bt" "$BINARY" "$CORE_FILE" 2>&1 | tail -30
+                echo ""
+                echo "For full analysis: gdb $BINARY $CORE_FILE"
+                echo "Then type 'bt full' for detailed backtrace"
+            else
+                echo "gdb not available - copy core to PC for analysis"
+                echo "  gdb-multiarch $BINARY $CORE_FILE"
+            fi
+        fi
     else
-        echo "No core dump found (may need: echo 'core.%p' | sudo tee /proc/sys/kernel/core_pattern)"
+        echo "❌ No core dump found"
+        echo "Check: cat /proc/sys/kernel/core_pattern"
+        echo "If it starts with '|', cores are piped to a handler"
     fi
     echo ""
     echo "=== SEGFAULT TROUBLESHOOTING ==="
@@ -327,7 +420,7 @@ if [ $LAUNCH_EXIT -eq 139 ]; then
     echo "4. ESUDO environment issues"
     echo ""
     echo "Try running without ESUDO:"
-    echo "  LD_LIBRARY_PATH=\".:$LIBDIR:\$LD_LIBRARY_PATH\" ./$BINARY"
+    echo "  LD_LIBRARY_PATH=\".:$LIBDIR:\$LD_LIBRARY_PATH\" ./$BINARY -nosound"
 fi
 
 exit $LAUNCH_EXIT

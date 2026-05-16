@@ -9,6 +9,22 @@
 ---@nodiscard
 function GetThingsOfClass(class) end
 
+---returns a list containing all things on the given subtile
+---@param stl_x integer
+---@param stl_y integer
+---@param class? thing_class if not given, will return all things on the subtile
+---@return Thing[]
+---@nodiscard
+function GetThingsOnSubtile(stl_x, stl_y, class) end
+
+---returns a list containing all things on the given slab
+---@param slb_x integer
+---@param slb_y integer
+---@param class? thing_class if not given, will return all things on the slab
+---@return Thing[]
+---@nodiscard
+function GetThingsOnSlab(slb_x, slb_y, class) end
+
 ---gets a single creature based on the given criteria
 ---@param player playerrange
 ---@param creature_type creature_type
@@ -38,3 +54,12 @@ function ChangeCreatureOwner(creature,new_owner) end
 ---@param operation any
 ---@param annoyance integer
 function ChangeCreaturesAnnoyance(player,creature,operation,annoyance) end
+
+---Place any corpse at a specific place on the map
+---@param creature creature_type
+---@param location location
+---@param experience integer The experience level of the corpse. Determines the size.
+---@param dying? boolean If the corpse is still falling down when spawned.
+---@param owner? playersingle The owner of the corpse.
+---@return Thing object
+function AddCorpseToLevel(creature,location,experience,dying,owner) local ob return ob end

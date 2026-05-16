@@ -1,0 +1,15 @@
+; KeeperFX Level Overview File (LOF)
+MAP_FORMAT_VERSION = 1.05
+NAME_TEXT = Dragon's Den
+NAME_ID = Dragon's Den
+KIND = MULTI
+ENSIGN_POS = 928 720
+ENSIGN_ZOOM = 928 720
+PLAYERS = 2
+OPTIONS = 
+SPEECH = 
+LAND_VIEW = 
+AUTHOR = Woudo
+DESCRIPTION = It is what it is.
+DATE = 2023-9-3
+MAPSIZE = 85 85
