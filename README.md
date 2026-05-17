@@ -13,7 +13,12 @@ Discord (Keeper Klan): https://discord.gg/hE4p7vy2Hb
 
 ##required from original DK.
 
-This document lists files which need to be added to KeeperFX from original dungeon Keeper CD, or one of the digital releases of the game.
+you'll need files which need to be added to KeeperFX from original dungeon Keeper CD, or one of the digital releases of the game.
+which can be bought here
+http://www.gog.com/en/gamecard/dungeon_keeper
+https://www.ea.com/games/dungeon-keeper/dungeon-keeper
+https://store.steampowered.com/app/1996630/Dungeon_Keeper_Gold/
+
 
 List of required files will follow:
 
@@ -43,18 +48,15 @@ List of required files will follow:
 |B|control|
 |X|Zoom to fight|
 |Y|Zoom to Heart|
-|Start|Space (to go to next level)|
-|Select|pause and open menu|
+|select|go to next level|
+|start|pause and open menu|
 |LT1|Right mouse button|
 |RT1|Left Mouse button|
-|LT2|switch menu tab fwd|
-|RT2|switch menu tab back|
+|LT2|switch menu tab fwd/ switch spell in possession|
+|RT2|switch menu tab back/ switch spell in possession  |
+|RT2|switch menu tab back/ switch spell in possession  |
 |right stick|move mouse|
 |left stick|move camera|
-|dpad up/down|zoom camera|
-|dpad left/right|rotate camera|
+|dpad|snap to button|
 
-LT2 RT2 are completly optional, just a bit faster to navigate,
-if there is only 1 stick, it'll fallback, the stick will be mouse, and dpad will be move camera
-dpad + B will do the zoom and rotate then
-dpad only kind of playable by moving mouse to edge of screen to move camera, but can't rotate/zoom so far from ideal
+atm 2 stick device suppported, 
