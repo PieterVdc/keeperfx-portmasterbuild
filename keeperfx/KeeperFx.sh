@@ -55,33 +55,7 @@ echo "Script started at $(date)"
 # Port specific additional libraries should be included within the port's directory in a separate subfolder named libs.aarch64, libs.armhf or libs.x64
 LIBDIR="$GAMEDIR/keeperfx/libs.${DEVICE_ARCH}"
 
-# Use libraries directly from LIBDIR instead of copying
 
-
-# Create symlinks for library version mismatches in LIBDIR if needed
-if [ -d "$LIBDIR" ]; then
-    cd "$LIBDIR"
-    for lib in libavcodec.so.58.* libavformat.so.58.* libavutil.so.56.* libswresample.so.3.*; do
-        [ -e "$lib" ] || continue
-        base=$(echo "$lib" | sed 's/\.[0-9]*$//')
-        [ -e "$base" ] || ln -sf "$lib" "$base" 2>/dev/null
-    done
-
-    # Create SDL2 base symlinks if needed
-    for lib in libSDL2-2.0.so.0.* libSDL2_mixer-2.0.so.0.* libSDL2_net-2.0.so.0.*; do
-        [ -e "$lib" ] || continue
-        base=$(echo "$lib" | sed 's/\.[0-9]*$//')
-        [ -e "$base" ] || ln -sf "$lib" "$base" 2>/dev/null
-    done
-    cd "$GAMEDIR/keeperfx"
-fi
-
-# CRITICAL: Copy SDL2 libraries to current directory
-# System SDL2/SDL2_mixer may have version mismatches - bundled versions MUST be used
-for lib in libSDL2-2.0.so.0* libSDL2_mixer-2.0.so.0* libSDL2_net-2.0.so.0*; do
-    [ -e "$LIBDIR/$lib" ] || continue
-    cp "$LIBDIR/$lib" ./ 2>/dev/null
-done
 
 # Use ABSOLUTE paths for LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=".:$LIBDIR:$LD_LIBRARY_PATH"
@@ -102,16 +76,10 @@ esac
 # Check which binary exists
 if [ -f "./keeperfx.${BINARY_ARCH}" ]; then
     BINARY="./keeperfx.${BINARY_ARCH}"
-elif [ -f "./keeperfx-arm64" ]; then
-    BINARY="./keeperfx-arm64"
-elif [ -f "./keeperfx" ]; then
-    BINARY="./keeperfx"
 else
     echo "ERROR: No keeperfx binary found!"
     echo "Searched for:"
     echo "  ./keeperfx.${BINARY_ARCH}"
-    echo "  ./keeperfx-arm64"
-    echo "  ./keeperfx"
     echo "Available files:"
     ls -la | grep -E 'keeperfx|^-rw|^-rwx' | head -20
     sleep 5
