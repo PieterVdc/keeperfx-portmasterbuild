@@ -28,9 +28,9 @@ GAMEDIR="/$directory/ports/keeperfx"
 
 # Check if original Dungeon Keeper data files exist
 if [ ! -d "$GAMEDIR/keeperfx/data" ] || [ ! -f "$GAMEDIR/keeperfx/data/bluepal.dat" ]; then
-    echo "ERROR: Original Dungeon Keeper data files not found!"
-    echo "Please place your original game files in: $GAMEDIR/keeperfx/data/"
-    echo "You need the 'data' folder from the original Dungeon Keeper game."
+    pm_message "ERROR: Original Dungeon Keeper data files not found!"
+    pm_message "Please place your original game files in: $GAMEDIR/keeperfx/data/"
+    pm_message "You need the 'data' folder from the original Dungeon Keeper game."
     sleep 5
     exit 1
 fi
