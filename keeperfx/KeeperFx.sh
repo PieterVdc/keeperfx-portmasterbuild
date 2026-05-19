@@ -345,9 +345,9 @@ if which catchsegv >/dev/null 2>&1; then
 fi
 
 if [ -n "$ESUDO" ]; then
-    echo "Command: $ESUDO env LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH\" $USE_CATCHSEGV $BINARY -nosound"
+    echo "Command: $ESUDO env LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH\" $USE_CATCHSEGV $BINARY"
 else
-    echo "Command: $USE_CATCHSEGV $BINARY -nosound (no sudo)"
+    echo "Command: $USE_CATCHSEGV $BINARY (no sudo)"
 fi
 echo "Starting at: $(date)"
 echo ""
@@ -355,9 +355,9 @@ echo ""
 # Now we launch KeeperFX - explicitly pass LD_LIBRARY_PATH through sudo using env
 if [ -n "$ESUDO" ]; then
     # sudo drops LD_LIBRARY_PATH, so we use env to set it
-    $ESUDO env LD_LIBRARY_PATH="$LD_LIBRARY_PATH" $USE_CATCHSEGV "$BINARY" -nosound
+    $ESUDO env LD_LIBRARY_PATH="$LD_LIBRARY_PATH" $USE_CATCHSEGV "$BINARY"
 else
-    $USE_CATCHSEGV "$BINARY" -nosound
+    $USE_CATCHSEGV "$BINARY"
 fi
 
 LAUNCH_EXIT=$?
