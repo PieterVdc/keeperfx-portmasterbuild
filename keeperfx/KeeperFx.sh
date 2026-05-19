@@ -29,8 +29,11 @@ GAMEDIR="/$directory/ports/keeperfx"
 # Check if original Dungeon Keeper data files exist
 if [ ! -d "$GAMEDIR/keeperfx/data" ] || [ ! -f "$GAMEDIR/keeperfx/data/bluepal.dat" ]; then
     pm_message "ERROR: Original Dungeon Keeper data files not found!"
-    pm_message "Please place your original game files in: $GAMEDIR/keeperfx/data/"
-    pm_message "You need the 'data' folder from the original Dungeon Keeper game."
+    pm_message "Please place following files from the original game files in: $GAMEDIR/keeperfx/data/"
+    pm_message "./data/bluepal.dat ./data/bluepall.dat ./data/dogpal.pal./data/hitpall.dat ./data/lightng.pal ./data/main.pal ./data/mapfadeg.dat./data/redpal.col ./data/redpall.dat ./data/slab0-0.dat ./data/slab0-1.dat./data/vampal.pal ./data/whitepal.col"
+    pm_message "and these in : $GAMEDIR/keeperfx/sound/"
+    pm_message "./sound/atmos1.sbk ./sound/atmos2.sbk ./sound/bullfrog.sbk"
+
     sleep 5
     exit 1
 fi
@@ -77,10 +80,10 @@ esac
 if [ -f "./keeperfx.${BINARY_ARCH}" ]; then
     BINARY="./keeperfx.${BINARY_ARCH}"
 else
-    echo "ERROR: No keeperfx binary found!"
-    echo "Searched for:"
-    echo "  ./keeperfx.${BINARY_ARCH}"
-    echo "Available files:"
+    pm_message "ERROR: No keeperfx binary found!"
+    pm_message "Searched for:"
+    pm_message "  ./keeperfx.${BINARY_ARCH}"
+    pm_message "Available files:"
     ls -la | grep -E 'keeperfx|^-rw|^-rwx' | head -20
     sleep 5
     exit 1
