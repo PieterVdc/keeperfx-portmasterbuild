@@ -27,11 +27,11 @@ get_controls
 GAMEDIR="/$directory/ports/keeperfx"
 
 # Check if original Dungeon Keeper data files exist
-if [ ! -d "$GAMEDIR/keeperfx/data" ] || [ ! -f "$GAMEDIR/keeperfx/data/bluepal.dat" ]; then
+if [ ! -d "$GAMEDIR/data" ] || [ ! -f "$GAMEDIR/data/bluepal.dat" ]; then
     pm_message "ERROR: Original Dungeon Keeper data files not found!"
-    pm_message "Please place following files from the original game files in: $GAMEDIR/keeperfx/data/"
+    pm_message "Please place following files from the original game files in: $GAMEDIR/data/"
     pm_message "./data/bluepal.dat ./data/bluepall.dat ./data/dogpal.pal./data/hitpall.dat ./data/lightng.pal ./data/main.pal ./data/mapfadeg.dat./data/redpal.col ./data/redpall.dat ./data/slab0-0.dat ./data/slab0-1.dat./data/vampal.pal ./data/whitepal.col"
-    pm_message "and these in : $GAMEDIR/keeperfx/sound/"
+    pm_message "and these in : $GAMEDIR/sound/"
     pm_message "./sound/atmos1.sbk ./sound/atmos2.sbk ./sound/bullfrog.sbk"
 
     sleep 5
@@ -39,7 +39,7 @@ if [ ! -d "$GAMEDIR/keeperfx/data" ] || [ ! -f "$GAMEDIR/keeperfx/data/bluepal.d
 fi
 
 # Switch to the game directory
-cd "$GAMEDIR/keeperfx" || { echo "ERROR: Cannot cd to $GAMEDIR/keeperfx"; exit 1; }
+cd "$GAMEDIR" || { echo "ERROR: Cannot cd to $GAMEDIR"; exit 1; }
 
 # Log the execution of the script, the script overwrites itself on each launch
 # Use simple redirect if tee with process substitution doesn't work
